@@ -98,7 +98,7 @@ def gerar_tabela_completa(corda_frente, corda_tras, num_paineis_totais):
     num_paineis_tras = max(1, num_paineis_totais - num_paineis_frente)
 
     malha_frente_norm = gerar_malha(corda_frente, False, True, num_paineis_frente)
-    malha_tras_norm = gerar_malha(corda_tras, True, False, num_paineis_tras)
+    malha_tras_norm = gerar_malha(corda_tras, False, True, num_paineis_tras)
 
     malha_frente_dim = malha_frente_norm * corda_frente
     malha_tras_dim = malha_tras_norm * corda_tras + corda_frente
@@ -117,8 +117,8 @@ def gerar_tabela_completa(corda_frente, corda_tras, num_paineis_totais):
         return np.pad(arr, (0, max(0, target_len - len(arr))), constant_values=np.nan)
 
     df = pd.DataFrame({
-        "Painel Frente": pad_array(malha_frente_norm, max_len),
-        "Aileron": pad_array(malha_tras_norm, max_len),
+        "Painel Frente": pad_array(malha_frente_dim / corda_frente, max_len),
+        "Aileron": pad_array((malha_tras_dim - corda_frente) / corda_tras, max_len),
         "Painel Inteiro": pad_array(prop_combinada, max_len)
     })
     
@@ -149,9 +149,11 @@ def salvar_em_excel(df, nome_arquivo):
 #
 #--------------------------------------------------------------------------------------
 
-corda_frente = 0.236922  # corda do painel DLM da frente (da seção que tem o aileron, não complica porra)
+#caso referencial for painel esquerdo do avião, pegar o valor 3-4
+#caso referencial for painel direito do avião, pegar o valor 1-2
+corda_frente = 0.546941  # corda do painel DLM da frente (da seção que tem o aileron, não complica porra)
 
-corda_tras = 0.100656    # auto explicativo, não vou nem explicar aqui 
+corda_tras = 0.133685    # auto explicativo, não vou nem explicar aqui 
 
 num_paineis_corda = 50   # tem como calcular o valor ideal para os paineis
                          # mas fica uma merda, pq ele sempre subestima   
