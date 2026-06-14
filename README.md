@@ -27,4 +27,6 @@ The code requires the `numpy`, `pandas`, and `xlsxwriter` libraries.
 ---
 
 ### 2. Configuring the Variables 
-Open the script and scrool to the end, under the `CONFIGURAÇÕES INICIAIS`
+Open the script and scrool to the end, under the `CONFIGURAÇÕES INICIAIS` (Initial Configurations) section. You only need to change three variables:
+
+  -`"corda_frente"`: The actual physical length of the section in front of your control surface as shown bellow.
