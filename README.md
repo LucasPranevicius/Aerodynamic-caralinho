@@ -29,9 +29,13 @@ The code requires the `numpy`, `pandas`, and `xlsxwriter` libraries.
 Open the script and scrool to the end, under the `CONFIGURAÇÕES INICIAIS` (Initial Configurations) section. You only need to change three variables:
 
   - `"corda_frente"`: The actual physical length of the section in front of your control surface as shown bellow.
-AQUI VAI UMA IMAGEM
+
+    ![corda_frente illustration](Caralinho_Aerodinâmico\images\corda_frente.png)
+
   - `"corda_tras"`: The actual physical length of your control surface.
-AQUI VAI UMA IMAGEM
+
+    ![corda_tras illustration](Caralinho_Aerodinâmico\images\corda_tras.png)
+
   - `"num_paineis_corda"`: How many panels you want across the entire chord. (The code will automatically split this amount proportionally between the front and the rear).
 
 
